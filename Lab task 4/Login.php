@@ -16,8 +16,9 @@ else
   require 'top.php';
 }
 
-$username="Al Amin";
-$userpassword="@0123456789";
+$username="Anketa Chowdhury";
+$userpassword="@56489256";
+
 
 if (isset($_POST['user_name'])) {
 	if ($_POST['user_name']==$username && $_POST['password']==$userpassword) {
