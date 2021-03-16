@@ -102,11 +102,9 @@ function test_input($data) {
 <option value="O+">O+</option>
 <option value="AB+">Audi</option>
 </select><span class="error">* <?php echo $carErr;?></span>
-
 <br><br>
 <input type="submit" value="Submit">
-
-   
+ 
 </form>
 
 <?php

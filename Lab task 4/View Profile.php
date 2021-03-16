@@ -14,7 +14,7 @@
 
 session_start();
 
-if (isset($_SESSION['user_name'])){require 'top1.php';}
+if (isset($_SESSION['user_name'])){require 'Logged In Dashboard.php';}
 else
 {
   header("location:Welcome.php");
@@ -48,7 +48,7 @@ foreach($data as $row)
 
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><hr>
+<br><br><br><br><br><br><br><hr>
 <a href="Edit Profile.php">Edit Profile</a>
 </fieldset> 
 

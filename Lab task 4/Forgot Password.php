@@ -18,7 +18,7 @@ else
   require 'top.php';
 }
 
-$retrive_email="chowdhuryankeeta@gmail.com";
+$retrive_email="chowdhuryanketa@gmail.com";
 $emailErr = "";
 $email = $msg ="";
 
@@ -58,13 +58,13 @@ function test_input($data)
   return $data;
 }
  ?>
-<div style="margin-left: 35%; margin-top: 10%;">
+<div style="margin-left: 30%; margin-top: 15%;">
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
- <fieldset style="width: 400px">
+ <fieldset style="width: 500px">
   <legend>Forgot Password</legend>
 
   <label for="email">Enter Email :</label>
-  <input type="text" id="email" name="email">
+  <input type="email" id="email" name="email">
   <span class="error"> <?php echo $emailErr;?></span><hr>
 
   <input type="submit" value="Submit">

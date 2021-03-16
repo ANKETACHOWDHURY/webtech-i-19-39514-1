@@ -8,7 +8,7 @@
 
 session_start();
 
-if (isset($_SESSION['user_name'])){ require 'top1.php';}
+if (isset($_SESSION['user_name'])){ require 'Logged In Dashboard.php';}
 else
   header("location:Login.php");
  ?>
@@ -19,7 +19,7 @@ else
 <?php
 $current_password = $new_password = $retype_new_password = "";
 $current_passwordErr = $new_passwordErr = $retype_new_passwordErr = "";
-$pasword="@1234567890";
+$pasword="@154796125";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
