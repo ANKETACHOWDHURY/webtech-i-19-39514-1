@@ -1,6 +1,5 @@
 <?php
 
-
 $nameErr = $passwordErr = $categoryErr = "";
 $name = $password = $category = "";
 if (isset($_POST['name']) && isset($_POST['category'])) 
@@ -10,13 +9,13 @@ if (isset($_POST['name']) && isset($_POST['category']))
   {
 		$_SESSION['name'] = $name;
     $_SESSION['category'] = $category;
-
+    $_SESSION['id'] = $id;
     if(isset($_POST['remember_me']))
     {
     $time = time();
-    setcookie('name', $name, $time+(86400 * 30));
-    setcookie('password', $_POST['password'], $time+(86400 * 30));
-    setcookie('category', $category, $time+(86400 * 30));
+    setcookie('name', $name, $time+50);
+    setcookie('password', $_POST['password'], $time+50);
+    setcookie('category', $category, $time+50);
     }
     header("location:welcome.php");
 	}
@@ -64,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   else 
   {
     $password = test_input($_POST["password"]);
-    if (strlen($password) < 8)
+    if (strlen($password) <= 8)
     {
       $passwordErr = "Must be atleast 8 characters";
       $password="";

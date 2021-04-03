@@ -7,13 +7,15 @@ else
   {  $name = $email = $mobile_number = $address = $password = $confirm_password = $gender = $category = $dob = $encrypted_password = '';}
 
 $nameErr = $emailErr = $mobile_numberErr = $addressErr = $passwordErr = $confirm_passwordErr = $genderErr = $categoryErr = $dobErr = '';
-$flag=1;  
+$flag=1;
+$update="on";  
 if($_SERVER["REQUEST_METHOD"] == "POST")  
 {  
   if (empty($_POST["name"])) 
   {
     $nameErr = "Name is required";
     $flag=0;
+    $update="off"; 
   } 
   else 
   {
@@ -23,6 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       $nameErr = "Only letters, white space, period, dash allowed and minimum two words";
       $name="";
       $flag=0;
+      $update="off";
     }
   }
 
@@ -31,6 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $emailErr = "Email is required";
     $flag=0;
+    $update="off";
   } 
   else 
   {
@@ -40,6 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       $emailErr = "Invalid email format";
       $email="";    
       $flag=0;
+      $update="off";
     }
   }
 
@@ -48,6 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $mobile_numberErr = "Mobile Number is required";
     $flag=0;
+    $update="off";
   } 
   else 
   {
@@ -57,6 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       $mobile_numberErr = "Invalid Number";
       $mobile_number="";
       $flag=0;
+      $update="off";
     }
   }
 
@@ -64,6 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $addressErr = "Address is required";
     $flag=0;
+    $update="off";
   } 
   else 
   {
@@ -153,6 +161,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         echo 'Registration Completed';
       }
     }  
+  }
+  if($update=="on")
+  {
+    if(isset($_POST["submit"]) && isset($_SESSION['name']))
+    {
+      $data['name'] = $_POST['name'];
+      $data['email'] = $_POST['email'];
+      $data['mobile_number'] = $_POST['mobile_number'];
+      $data['address'] = $_POST['address'];
+
+      if (updateData($_SESSION['id'], $data)) 
+      {
+        echo 'Successfully Updated';
+      }
+    }
   }    
 } 
 

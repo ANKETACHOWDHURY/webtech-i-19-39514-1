@@ -12,8 +12,8 @@
 <div class="right">
 	<?php echo "Logged in as ".$_SESSION['category']."||".$_SESSION['name']."||"; ?>
 	<a href="welcome.php">Home</a>
-	<a href="patient payment.php">Patient Payment</a>	
-	<a href=" My Prescription.php">My Prescription</a>
+	<a href="My Prescription.php">My Prescription</a>	
+	<a href="patient Payment.php">Patient Payment</a>
 	<a href="viewProfile.php">View Profile</a>
 	<a href="Controller/logout.php">Logout</a>
 </div>

@@ -28,7 +28,7 @@ require 'Controller/storeData.php';
   <span class="error"> <?php echo $emailErr;?></span><hr>
 
   <label for="mobile_number">Mobile Number :</label>
-  <input type="tel" id="mobile_number" name="mobile_number" placeholder="01123456789" pattern="[0-9]{3}[0-9]{8}">
+  <input type="tel" id="mobile_number" name="mobile_number" pattern="[0-9]{3}[0-9]{8}">
   <span class="error"> <?php echo $mobile_numberErr;?></span><hr>
 
   <label for="address">Address :</label>

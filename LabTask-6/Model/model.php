@@ -4,7 +4,7 @@ require_once 'db_connect.php';
 
 function addData($data){
     $conn = db_conn();
-    $selectQuery = "INSERT INTO `patient`(`Name`, `Email`, `Mobile Number`, `Address`, `Password`, `Category`, `Gender`, `Date of Birth`)  VALUES (:name, :email, :mobile_number, :address, :password, :category, :gender, :dob)";
+    $selectQuery = "INSERT INTO `Patient`(`Name`, `Email`, `Mobile Number`, `Address`, `Password`, `Category`, `Gender`, `Date of Birth`)  VALUES (:name, :email, :mobile_number, :address, :password,  :category, :gender, :dob)";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([
@@ -25,7 +25,7 @@ function addData($data){
     return true;
 }
 
-function showAllproducts(){
+function showAllData(){
 	$conn = db_conn();
     $selectQuery = 'SELECT * FROM `patient` ';
     try{
@@ -37,13 +37,45 @@ function showAllproducts(){
     return $rows;
 }
 
-function updateProduct($id, $data){
+function updateData($id, $data){
     $conn = db_conn();
-    $selectQuery = "UPDATE `patient` set `Name` = ?, `Buying Price` = ?, `Selling Price` = ?, `Display` = ? where `ID` = ?";
+    $selectQuery = "UPDATE `patient` set `Name` = ?, `Email` = ?, `Mobile Number` = ?, `Address` = ? where `ID` = ?";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([
-            $data['name'], $data['buyingPrice'], $data['sellingPrice'], $data['display'], $id
+            $data['name'], $data['email'], $data['mobile_number'], $data['address'], $id
+        ]);
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    
+    $conn = null;
+    return true;
+}
+
+function updatePassword($id, $data){
+    $conn = db_conn();
+    $selectQuery = "UPDATE `patient` set `Password` = ? where `ID` = ?";
+    try{
+        $stmt = $conn->prepare($selectQuery);
+        $stmt->execute([
+            $data, $id
+        ]);
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    
+    $conn = null;
+    return true;
+}
+
+function updatePicture($id, $data){
+    $conn = db_conn();
+    $selectQuery = "UPDATE `patient` set `Image` = ? where `ID` = ?";
+    try{
+        $stmt = $conn->prepare($selectQuery);
+        $stmt->execute([
+            $data, $id
         ]);
     }catch(PDOException $e){
         echo $e->getMessage();
@@ -55,7 +87,7 @@ function updateProduct($id, $data){
 
 function deleteProduct($id){
     $conn = db_conn();
-    $selectQuery = "DELETE FROM `patient` WHERE `ID` = ?";
+    $selectQuery = "DELETE FROM `product_info` WHERE `ID` = ?";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([$id]);
